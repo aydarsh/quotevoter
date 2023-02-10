@@ -21,6 +21,11 @@ public class QuoteController {
         return quoteRepository.findAll();
     }
 
+    @GetMapping("/top")
+    public List<Quote> getTop10Quotes() {
+        return quoteRepository.findTop10ByOrderByVotesDesc();
+    }
+
     @GetMapping("/{id}")
     public Quote getQuoteById(@PathVariable Long id) {
         return quoteRepository.findById(id)
@@ -50,5 +55,25 @@ public class QuoteController {
         }
 
         quoteRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}/upvote")
+    public Quote upvoteQuote(@PathVariable Long id) {
+        Quote quote = quoteRepository.findById(id)
+                .orElseThrow(() -> new QuoteNotFoundException(id));
+
+        int currentVotes = quote.getVotes();
+        quote.setVotes(currentVotes + 1);
+        return quoteRepository.save(quote);
+    }
+
+    @PutMapping("/{id}/downvote")
+    public Quote downvoteQuote(@PathVariable Long id) {
+        Quote quote = quoteRepository.findById(id)
+                .orElseThrow(() -> new QuoteNotFoundException(id));
+
+        int currentVotes = quote.getVotes();
+        quote.setVotes(currentVotes - 1);
+        return quoteRepository.save(quote);
     }
 }
