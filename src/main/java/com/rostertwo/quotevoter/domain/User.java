@@ -1,6 +1,7 @@
 package com.rostertwo.quotevoter.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 @ToString
+@Table(name = "\"User\"")
 public class User {
 
     @Id
