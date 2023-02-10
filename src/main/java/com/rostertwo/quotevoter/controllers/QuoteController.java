@@ -3,6 +3,7 @@ package com.rostertwo.quotevoter.controllers;
 import com.rostertwo.quotevoter.domain.Quote;
 import com.rostertwo.quotevoter.exceptions.QuoteNotFoundException;
 import com.rostertwo.quotevoter.repositories.QuoteRepository;
+import com.rostertwo.quotevoter.services.QuoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 public class QuoteController {
 
     private final QuoteRepository quoteRepository;
+    private final QuoteService quoteService;
 
     @GetMapping
     public List<Quote> getAllQuotes() {
@@ -58,22 +60,12 @@ public class QuoteController {
     }
 
     @PutMapping("/{id}/upvote")
-    public Quote upvoteQuote(@PathVariable Long id) {
-        Quote quote = quoteRepository.findById(id)
-                .orElseThrow(() -> new QuoteNotFoundException(id));
-
-        int currentVotes = quote.getVotes();
-        quote.setVotes(currentVotes + 1);
-        return quoteRepository.save(quote);
+    public Quote upvoteQuote(@PathVariable Long id, @RequestParam Long userId) {
+        return quoteService.upvoteQuote(id, userId);
     }
 
     @PutMapping("/{id}/downvote")
-    public Quote downvoteQuote(@PathVariable Long id) {
-        Quote quote = quoteRepository.findById(id)
-                .orElseThrow(() -> new QuoteNotFoundException(id));
-
-        int currentVotes = quote.getVotes();
-        quote.setVotes(currentVotes - 1);
-        return quoteRepository.save(quote);
+    public Quote downvoteQuote(@PathVariable Long id, @RequestParam Long userId) {
+        return quoteService.downvoteQuote(id, userId);
     }
 }
