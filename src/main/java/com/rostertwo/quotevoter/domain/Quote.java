@@ -28,8 +28,6 @@ public class Quote {
 
     private String author;
 
-    private int upvotes;
-
-    private int downvotes;
+    private Integer votes;
 }
 
