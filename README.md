@@ -2,13 +2,13 @@
 Quote Voter is a Spring Boot application for managing quotes and voting on them.
 
 ## Docker Hub Repository
-The Docker image for this application is available at `aydarsh/quotevoter` repository on Docker Hub.
+The Docker image for this application is available at [`aydarsh/quotevoter`](https://hub.docker.com/r/aydarsh/quotevoter) repository on Docker Hub.
 
 ## API Access
 The API for this application is accessible via `http://localhost:8080/api`.
 
-API Documentation
-The API documentation can be accessed at http://localhost:8080/swagger-ui.html once the application is running.
+## API Documentation
+The API documentation can be accessed at `http://localhost:8080/swagger-ui.html` once the application is running.
 
 ## Functionality
 - User account creation
