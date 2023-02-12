@@ -7,6 +7,9 @@ The Docker image for this application is available at `aydarsh/quotevoter` repos
 ## API Access
 The API for this application is accessible via `http://localhost:8080/api`.
 
+API Documentation
+The API documentation can be accessed at http://localhost:8080/swagger-ui.html once the application is running.
+
 ## Functionality
 - User account creation
 - Quote creation, viewing, modification, and deletion
