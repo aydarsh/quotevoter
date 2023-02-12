@@ -14,6 +14,9 @@ The API for this application is accessible via `http://localhost:8080/api`.
 - Viewing the top 10 quotes and details of each quote
 - Viewing the evolution of votes over time with a graph
 
+## GitHub Actions CI Pipeline
+The repository has a GitHub Actions CI pipeline configured to build a Docker image and push it to Docker Hub. In order to build a Docker image with a SemVer or `latest` tag, the repository must be tagged and the tag must be pushed.
+
 ## Endpoints
 - `/api/users`: Endpoint for creating and managing user accounts.
 - `/api/quotes`: Endpoint for adding, viewing, modifying, and deleting quotes.
@@ -31,6 +34,6 @@ The following tools are required to run this application:
 ## Running the Application
 You can run this application using Docker and Docker Compose. Simply run the following command in the root directory of the application:
 ```
-docker-compose up
+docker-compose up --pull always
 ```
 This will start the application and you can access the API at `http://localhost:8080/api`.
