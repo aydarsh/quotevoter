@@ -1,0 +1,6 @@
+version: '3'
+services:
+  app:
+    image: aydarsh/quotevoter
+    ports:
+      - 8080:8080
