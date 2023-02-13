@@ -23,10 +23,11 @@ The repository has a GitHub Actions CI pipeline configured to build a Docker ima
 ## Endpoints
 - `/api/users`: Endpoint for creating and managing user accounts.
 - `/api/quotes`: Endpoint for adding, viewing, modifying, and deleting quotes.
-- `/api/votes`: Endpoint for voting on quotes.
+- `/api/quotes/{quoteId}/upvote`: Endpoint for upvoting a specific quote.
+- `/api/quotes/{quoteId}/upvote`: Endpoint for downvoting a specific quote.
 - `/api/quotes/top`: Endpoint for viewing the top 10 quotes based on their vote count.
 - `/api/quotes/{quoteId}`: Endpoint for viewing the details of a specific quote.
-- `/api/quotes/{quoteId}/votes`: Endpoint for viewing the vote history of a specific quote.
+- `/api/votes/{quoteId}/daily`: Endpoint for viewing the vote history of a specific quote.
 
 ## Requirements
 The following tools are required to run this application:
