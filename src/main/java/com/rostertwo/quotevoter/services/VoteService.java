@@ -21,7 +21,10 @@ public class VoteService {
                 .collect(Collectors.groupingBy(vote -> vote.getCreatedAt().toLocalDate(),
                         Collectors.groupingBy(Vote::getType, Collectors.counting())))
                 .entrySet().stream()
-                .map(entry -> new GraphData(entry.getKey(), entry.getValue()))
+                .map(entry -> GraphData.builder()
+                        .date(entry.getKey())
+                        .voteCount(entry.getValue())
+                        .build())
                 .collect(Collectors.toList());
     }
 }
