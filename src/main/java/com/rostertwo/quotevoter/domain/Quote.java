@@ -1,11 +1,9 @@
 package com.rostertwo.quotevoter.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -26,12 +24,16 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String text;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @NotNull
     private User author;
 
+    @Column(columnDefinition = "integer default 0")
+    @NotNull
     private Integer votes;
 }
 
