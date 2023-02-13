@@ -101,8 +101,7 @@ class UserControllerTest {
 
     @Test
     void updateUserNonExisting() throws Exception {
-        User userUpdated = User.builder().id(1L).username("New Name").build();
-        String json = objectMapper.writeValueAsString(userUpdated);
+        String json = objectMapper.writeValueAsString(User.builder().build());
         when(userRepository.existsById(1L)).thenReturn(false);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/users/1")
                 .contentType(MediaType.APPLICATION_JSON)
